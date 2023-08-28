@@ -37,7 +37,7 @@ public class Handler {
                     ");"
             );
         statement.close();
-        System.out.println("tables has been created");
+
     }
 
     public void insertInTableCustomer(Connection connection, Customer customer) throws SQLException {

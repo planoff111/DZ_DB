@@ -1,6 +1,7 @@
 package org.example;
 
 import org.example.Entity.*;
+import org.postgresql.util.PSQLException;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -15,7 +16,11 @@ public class Main {
                 "postgres", "123456")) {
             try {
                 handler.createTables(connection);
-            }finally {
+            }catch (PSQLException e){
+                System.out.println("Tables has been created");
+            }
+
+            finally {
                 List<Customer> cast = new ArrayList<>();
                 cast.add(new Customer("Ivan"));
                 cast.add(new Customer("Petro"));
