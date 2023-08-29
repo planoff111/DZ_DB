@@ -37,6 +37,7 @@ public class Handler {
                     ");"
             );
         statement.close();
+        System.out.println("Таблиці створено");
 
     }
 

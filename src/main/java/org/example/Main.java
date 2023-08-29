@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         Handler handler = new Handler();
 
 
@@ -16,8 +16,6 @@ public class Main {
                 "postgres", "123456")) {
 
             handler.createTables(connection);
-        } catch (SQLException e) {
-            System.out.println(e);
         }
         try (Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost/Dz_DB",
                 "postgres", "123456")) {
