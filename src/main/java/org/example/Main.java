@@ -8,17 +8,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
+    final static String url = "jdbc:postgresql://localhost/Dz_DB";
+    final static String user = "postgres";
+    final static String pass = "123456";
     public static void main(String[] args) throws SQLException {
         Handler handler = new Handler();
 
 
-        try (Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost/Dz_DB",
-                "postgres", "123456")) {
+        try (Connection connection = DriverManager.getConnection(url,user,pass)) {
 
             handler.createTables(connection);
+        }catch (SQLException e){
+            System.out.println(e);
         }
-        try (Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost/Dz_DB",
-                "postgres", "123456")) {
+        try (Connection connection = DriverManager.getConnection(url,user,pass)) {
 
             List<Customer> cast = new ArrayList<>();
             cast.add(new Customer("Ivan"));
@@ -87,8 +90,7 @@ public class Main {
             System.out.println(e);
         }
 
-        try (Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost/Dz_DB",
-                "postgres", "123456")) {
+        try (Connection connection = DriverManager.getConnection(url,user,pass)) {
             System.out.println("Отримати всі замовлення для 1 кастомера.");
             handler.takeOrderFromOneCastomer(connection, 2);
             System.out.println("Отримати всі замовлення для всіх кастомерів.");
